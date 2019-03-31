@@ -1,0 +1,46 @@
+/*dark theme rss*/
+
+.rcustomers, .cb-main-box{
+    background: rgb(45, 45, 45)!important;
+    color: white!important;
+}
+
+.testimonials blockquote{
+    background: black!important;
+    color: white!important;
+}
+
+.testimonials span.testimonials-post {
+    color: white!important;
+}
+
+ .charts-pagination > .active > span, .charts-pagination > .active > span:hover, .charts-pagination > .active > a:focus, .charts-pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #2d2d2d;
+    border-color: #2d2d2d;
+}
+
+.charts-pagination > .active > a:hover, .charts-pagination > li > a:hover{
+	background-color: #7b7979!important;;
+}
+
+.charts-pagination > li > a, .charts-pagination > li > span{
+	color: #ffffff!important;
+    background-color: #000!important;
+}
+
+.charts-pagination > .active > a {
+	background-color: #7b7979!important;
+    border: 1px solid white;
+}
+
+.circles-text, .circle{
+	color: white;
+}
+
+.cb-widget-box {
+    background: #2d2d2d!important;
+    color: white;
+}
