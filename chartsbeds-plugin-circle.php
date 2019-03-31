@@ -1,5 +1,4 @@
 <?php
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function cbeds_circles_func($atts){
@@ -7,63 +6,108 @@ function cbeds_circles_func($atts){
         'key' => esc_attr($cbc['key']),
     ), $atts );
     
-    $Context = stream_context_create(array('http' => array('timeout' => '2',)));
-	
+
 	if(empty($cbc['key'])){
 		$thekey = htmlspecialchars_decode (get_option("charts_key"));
 		$json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.$thekey.'', true, $Context);
 	}else{
-		$ekey = 'http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.$cbc['key'].'';
-		$json = file_get_contents($ekey, true, $Context);
-	}
-	
-  $obj = json_decode($json, true);
-  
-  if(!empty($obj)){
-	$arrPercent ='';
-	$cssafter = '';
- echo "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
-        echo '<div id="canvas">';	
-	
-	for ($i=1; $i<=5; $i++){
+		$thekey = 'http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.$cbc['key'].'';
+		$json = file_get_contents($thekey, true, $Context);
+    }
 
-    
-	$qname = $obj['questions']['question'.$i.''];
-	$qval = $obj['reviews_average']['question'.$i.''];
-	
-	if(empty($qval)){
-		$qval = '5.0000';	
-	}
-	
-	$cssafter .= " #circles-".$i.":after {content: '".trim(__( $qname , 'cbcircles' ))."';} ";
+    var_dump($json);
+    echo "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
+    echo "<style> span.circleTitle{
+            line-height: 16px;
+            font-size: 14px;
+            position: relative;
+            top: -40px;
+            } 
+        </style>";
+    ?>
 
-    $arrPercent[''.$qname.''] = $qval;
-	echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-'.$i.'">'.__( $qname , 'cbcircles' ).'</div></div>';
-	}
- echo '</div>';
+<div id="chartsbedsCircles">
 
-	echo "<style type=\"text/css\" media=\"screen\">".$cssafter."</style>";
+    <?php 
+        for($i = 1; $i <= 5; $i++){ ?>
+    <div class="wrap_circle" style="float:left;">
+        <div class="circle" id="circles-<?php echo $i ?>">
+            <div class="circles-wrp">
+                <div class="circles-text">
+                    <span class="circles-integer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 
-    echo '<script type="application/javascript">';
-        echo "var colors = [['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']], circles = []; \n";
+</div>
 
-        $i = 1;
-        foreach($arrPercent as $k=>$v){
-            $c_value = intval($v*20);
-        echo "var child = document.getElementById('circles-".$i."'), percentage = '".$c_value."',";
-                $h_color = $i-1;
-            echo "circle = Circles.create({ id:child.id,  value:percentage, radius:getWidth(), width:10, colors:colors['".$h_color."'],  duration:900,}); \n";
+<script type="text/javascript">
+let chartsPmsRequest = new XMLHttpRequest();
+chartsPmsRequest.open(
+    "GET",
+    "http://dashboard.chartspms.com/REVIEWS.json.php?apiKey=<?php echo $thekey ?>",
+    true
+);
+chartsPmsRequest.send();
 
-        $i++; }
+chartsPmsRequest.addEventListener("readystatechange", e => {
+    if (e.target.readyState === 4 && e.target.status === 200) {
+        const data = JSON.parse(e.target.responseText);
+        console.log(data);
 
-    echo "circles.push(circle); \n";
-    echo "window.onresize = function(e) {for (var i = 0; i < circles.length; i++) {circles[i].updateRadius(getWidth());}}; \n";
-    echo "function getWidth() {return window.innerWidth /28;} \n";
-    echo "</script>";
+        let questions = data.questions;
+        let answers = data.reviews_average;
 
-}else{
-    echo "Service temporary unavailable.";
+        for (let i = 1; i <= 5; i++) {
+            let circleArea = document.querySelector("#chartsbedsCircles");
+            let index = "question" + i;
+            //Color settings for circles
+            let colors = [
+                ["#D3B6C6", "#4B253A"],
+                ["#FCE6A4", "#EFB917"],
+                ["#BEE3F7", "#45AEEA"],
+                ["#F8F9B6", "#D2D558"],
+                ["#F4BCBF", "#D43A43"]
+            ];
+            let circles = [];
+            let circleId = "#circles-" + i;
+            let circleData = document.querySelector(circleId);
+            let percentage = answers[index] * 20;
+
+            console.log(circleData);
+            let h_color = colors[i - 1];
+            let circle = Circles.create({
+                id: circleData.id,
+                value: percentage,
+                radius: getWidth(),
+                width: 10,
+                colors: h_color,
+                duration: 900,
+                text: function(currentValue) {
+                    return currentValue + "% " + "<span class='circleTitle'>" + questions[index] +
+                        "</span>";
+                }
+            });
+            circles.push(circle);
+        }
+    }
+});
+
+window.onresize = function(e) {
+    for (var i = 0; i < circles.length; i++) {
+        circles[i].updateRadius(getWidth());
+    }
+};
+
+function getWidth() {
+    //Size of circles can be chenged here
+    return window.innerWidth / 28;
 }
-}
+</script>
 
+<?php
+
+}
 add_shortcode('chartsbeds-review-circle', 'cbeds_circles_func');
