@@ -5,7 +5,6 @@ function cbeds_circles_func($atts){
 	$cbc = shortcode_atts( array(
         'key' => esc_attr($cbc['key']),
     ), $atts );
-    
 
 	if(empty($cbc['key'])){
 		$thekey = htmlspecialchars_decode (get_option("charts_key"));
@@ -15,19 +14,10 @@ function cbeds_circles_func($atts){
 		$json = file_get_contents($thekey, true, $Context);
     }
 
-    var_dump($json);
     echo "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
-    echo "<style> span.circleTitle{
-            line-height: 16px;
-            font-size: 14px;
-            position: relative;
-            top: -40px;
-            } 
-        </style>";
-    ?>
+?>
 
 <div id="chartsbedsCircles">
-
     <?php 
         for($i = 1; $i <= 5; $i++){ ?>
     <div class="wrap_circle" style="float:left;">
@@ -40,7 +30,6 @@ function cbeds_circles_func($atts){
         </div>
     </div>
     <?php } ?>
-
 </div>
 
 <script type="text/javascript">
@@ -75,8 +64,6 @@ chartsPmsRequest.addEventListener("readystatechange", e => {
             let circleId = "#circles-" + i;
             let circleData = document.querySelector(circleId);
             let percentage = answers[index] * 20;
-
-            console.log(circleData);
             let h_color = colors[i - 1];
             let circle = Circles.create({
                 id: circleData.id,
@@ -107,7 +94,5 @@ function getWidth() {
 }
 </script>
 
-<?php
-
-}
+<?php }
 add_shortcode('chartsbeds-review-circle', 'cbeds_circles_func');

@@ -24,16 +24,17 @@ function cbeds_review_widget_shortcode($atts) {
 	}else{
 		$ekey = 'http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.$cba['key'].'&limit='.esc_attr($cba['limit']).'';
 		$json = file_get_contents($ekey, true, $Context);
-	}
+	} ?>
 
-    echo '<script>';
-    echo 'jQuery(document).ready(function() {';
-    echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " +", "lessText": " -",});';
-    echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " +", "lessText"	: " -",});';
-    echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
-     echo '});';
-    echo '</script>';
+    <script>
+        jQuery(document).ready(function() {
+            jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " +", "lessText": " -",});
+            jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " +", "lessText"	: " -",});
+            jQuery(".morecontent a").addClass("btn btn-default btn-xs");
+        });
+    </script>
 
+<?php
     //Start comments Widget
     echo '<div class="panel panel-default cb-widget-box">';
     if(get_option("thanks_on")) {
@@ -42,11 +43,9 @@ function cbeds_review_widget_shortcode($atts) {
         echo '<div class="panel-body">';
             echo '<ul class="media-list">';
 
-                  $obj = json_decode($json, true);
-
-                foreach ($obj as $title => $data){
+                $obj = json_decode($json, true);
+                foreach ($obj['reviews'] as $res){
                     $counter = 1;
-                    foreach($data as $q=>$res) {
                         if(is_array($res)){
                             echo '<li class="media">';
                             if(!get_option("gravataroff")) echo '<div class="media-left"><img src="'.$res['gravatar'].'" class="img-circle" width="60px"></div>';
@@ -68,7 +67,7 @@ function cbeds_review_widget_shortcode($atts) {
 									}
 									
                                 echo '</div></li><hr>';
-                        }
+                        
                     }
                 }
 

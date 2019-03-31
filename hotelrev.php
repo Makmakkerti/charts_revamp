@@ -14,7 +14,7 @@ include ( $pluginPath . 'chartsbeds-services.php' );
 include ( $pluginPath . 'chartsbeds-widget-bar.php' );
 include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
 
-error_reporting (0);
+//error_reporting (0);
 
 include ( $pluginPath . 'chartsbeds-plugin-page.php' );
 include ( $pluginPath . 'chartsbeds-widget-review.php' );
