@@ -1,6 +1,7 @@
 
 .carousel-info .pull-left{
-	/* max-width: 140px !important */
+  /* max-width: 140px !important */
+  float: left;
 }
 
 /* Testimonials */
@@ -234,6 +235,20 @@ span.circleTitle{
 .cb-thanks{
 	text-align: right;
 }
+
+.media-list li{
+  list-style-type: none;
+}
+
+.media-list li small{
+  font-size: 12px;
+} 
+
+.fa-heart:before{content:"\f004"}
+
+.fa-heart-o:before{content:"\f08a"}
+
+.fa-thumbs-up:before{content:"\f164"}
 /**REVIEW WIDGET END*/
 
 /*Pagination START*/

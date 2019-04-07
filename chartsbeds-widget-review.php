@@ -58,16 +58,16 @@ function cbeds_review_widget_shortcode($atts) {
                             <div class="media-left"><img src="<?php echo $res['gravatar'] ?>" class="img-circle" width="60px"></div>
                             <div class="media-body">
                                 <span class="revdate"><?php echo $res['timestamp'] ?></span>
-                                <h4 class="media-heading">
+                                <div class="media-heading">
                                     <small><b><?php echo ucfirst($res['name']) ?></b>
                                         <br /><?php echo $res['country'] ?></small><br>
                                     <small><span class="fa fa-thumbs-up" style="color:#337ab7"></span>
                                     <?php echo $res['guest_rating']?>% Satisfied <br></small>
-                                </h4>
+                                </div>
                                 <p class="charts-widg-p"><?php $res['review']; ?></p>
 
                                 <?php if($res['recommends']){ ?>
-                                    <p class="charts-widg"><small><span class="fa fa-heart" style="color:red"> </span>
+                                    <p class="charts-widg"><small><span class="fas fa-heart" style="color:red"></span>
                                     <?php echo ucfirst($res['name']); ?>
                                     <?php _e( ' recommends this hotel' , 'cbrevpage' ); ?></small></p>
                                 <?php } ?>
