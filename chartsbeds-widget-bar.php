@@ -25,53 +25,52 @@ function cbeds_widget_bar_creation($atts){
 	$arrPercent =[];
 	
 	for ($i=1; $i<=5; $i++){
-    $question = "question".$i;
-    $qval = $obj['reviews_average'][$question];
-	$qname = $obj['questions'][$question];
-	
-	if(empty($qval)){
-		$qval = '5.0000';	
-	}
+        $question = "question".$i;
+        $qval = $obj['reviews_average'][$question];
+        $qname = $obj['questions'][$question];
+        
+        if(empty($qval)){
+            $qval = '5.0000';	
+        }
 
-    $arrPercent[$qname]= $qval;
-	
+        $arrPercent[$qname]= $qval;
 	}
 ?>
 <script>
-jQuery(document).ready(function() {
-    jQuery(".progress .progress-bar").css("width", function() {
-        return jQuery(this).attr("aria-valuenow") + "%";
+    jQuery(document).ready(function() {
+        jQuery(".progress .progress-bar").css("width", function() {
+            return jQuery(this).attr("aria-valuenow") + "%";
+        });
+        jQuery(".charts-widg-p").shorten({
+            "showChars": 100,
+            "moreText": " +",
+            "lessText": " -",
+        });
+        jQuery(".cb-rev-clients").shorten({
+            "showChars": 100,
+            "moreText": " +",
+            "lessText": " -",
+        });
+        jQuery(".morecontent a").addClass("btn btn-default btn-xs");
     });
-    jQuery(".charts-widg-p").shorten({
-        "showChars": 100,
-        "moreText": " +",
-        "lessText": " -",
-    });
-    jQuery(".cb-rev-clients").shorten({
-        "showChars": 100,
-        "moreText": " +",
-        "lessText": " -",
-    });
-    jQuery(".morecontent a").addClass("btn btn-default btn-xs");
-});
 </script>
 
 <div class="reviews-progressbar">
     <?php
     $pl = 1;
-    foreach($arrPercent as $k=>$v){
-        $the_value = intval($v*20); ?>
-        <div class="progress skill-bar ">
-        <!-- Use the same translation domain as circles - cbcircles!!! -->
-        <div class="progress-bar progress-<?php echo $pl ?> progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo  $the_value ?>" aria-valuemin="0" aria-valuemax="100">
-        <span class="skill"><?php echo __( $k , 'cbcircles' ) ?><i class="val"><?php echo $the_value ?>%</i></span>
-        </div></div>
-        <?php
-        $pl++; 
-    if($pl>5){
-        echo "</div>";
-    }
-    }
+        foreach($arrPercent as $k=>$v){
+            $the_value = intval($v*20); ?>
+            <div class="progress skill-bar ">
+            <!-- Use the same translation domain as circles - cbcircles!!! -->
+            <div class="progress-bar progress-<?php echo $pl ?> progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo  $the_value ?>" aria-valuemin="0" aria-valuemax="100">
+            <span class="skill"><?php echo __( $k , 'cbcircles' ) ?><i class="val"><?php echo $the_value ?>%</i></span>
+            </div></div>
+            <?php
+            $pl++; 
+            if($pl>5){
+                echo "</div>";
+            }
+        }
     } ?>
 </div>
 
