@@ -33,19 +33,7 @@ function cbeds_circles_func($atts){
 </div>
 
 <script type="text/javascript">
-let chartsPmsRequest = new XMLHttpRequest();
-chartsPmsRequest.open(
-    "GET",
-    "http://dashboard.chartspms.com/REVIEWS.json.php?apiKey=<?php echo $thekey ?>",
-    true
-);
-chartsPmsRequest.send();
-
-chartsPmsRequest.addEventListener("readystatechange", e => {
-    if (e.target.readyState === 4 && e.target.status === 200) {
-        const data = JSON.parse(e.target.responseText);
-        console.log(data);
-
+        <?php echo "let data = $json;" ?>
         let questions = data.questions;
         let answers = data.reviews_average;
 
@@ -79,8 +67,6 @@ chartsPmsRequest.addEventListener("readystatechange", e => {
             });
             circles.push(circle);
         }
-    }
-});
 
 window.onresize = function(e) {
     for (var i = 0; i < circles.length; i++) {
