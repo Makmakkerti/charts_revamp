@@ -1,7 +1,5 @@
 <?php
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 
 // Include the pagination class
 include 'pagination.class.php';
@@ -53,9 +51,9 @@ jQuery(document).ready(function() {
 </script>
 
 <div class="row tinliner">
-
-    <div class="cb-thanks"><a href="http://www.chartsbeds.com/" target="_blank"><img
-                src="<?php echo plugins_url() ?>/chartsbeds/img/chartsbeds-web-logo.png" width="100px" /></a></div>
+    <div class="cb-thanks">
+    <a href="http://www.chartsbeds.com/" target="_blank"><img src="<?php echo plugins_url() ?>/chartsbeds/img/chartsbeds-web-logo.png" width="100px" /></a>
+    </div>
 
     <?php
     $all_reviews = $obj['reviews'];
@@ -92,10 +90,9 @@ jQuery(document).ready(function() {
             <div class="active item">
                 <blockquote>
                     <p class="cb-rev-clients"><?php echo $reviewsArray['review'];
-
-                if($reviewsArray['answer']){
-                    echo "<br><i class='fa fa-comments revanswer' aria-hidden='true'></i>".$obj['property']." answered: ".$reviewsArray['answer'];
-                } ?>
+                        if($reviewsArray['answer']){
+                            echo "<br><i class='fa fa-comments revanswer' aria-hidden='true'></i>".$obj['property']." answered: ".$reviewsArray['answer'];
+                        } ?>
                     </p>
                 </blockquote>
                 <div class="testimonials-rate col-md-4"><?php echo __( 'Rating' , 'cbrevpage' ) ?> :
@@ -108,21 +105,17 @@ jQuery(document).ready(function() {
                     </div>
                 </div>
                 <div class="carousel-info">
-
                     <img alt="" src="<?php echo $reviewsArray['gravatar'] ?>" class="pull-left">
-
                     <div class="pull-left">
                         <span class="testimonials-name"><?php echo $reviewsArray['name'] ?></span>
                         <span class="testimonials-time"><?php echo $reviewsArray['country'] ?></span>
                         <span class="testimonials-post"><?php echo $reviewsArray['timestamp'] ?></span>
-
                         <?php
 				if($reviewsArray['recommends']){
 					echo '<span class="testimonials-post"><i class="fa fa-heart recommends" aria-hidden="true"></i> '.$reviewsArray['name'].'&nbsp;'.__( 'recommends this hotel' , 'cbrevpage' );
 					echo '</span>';
                 }
                 ?>
-
                     </div>
                 </div>
             </div>
@@ -136,5 +129,4 @@ jQuery(document).ready(function() {
         }
     }
 }
-
 add_shortcode('chartsbeds-review-page', 'cbeds_review_add_shortcode');
