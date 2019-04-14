@@ -33,7 +33,7 @@ Limits
 With [chartsbeds-review-recent] and [chartsbeds-review-page] you can use limits. Example [chartsbeds-review-page limit="8"]
 
 
-Widgets
+Widgetsgit 
 
 Chartsbeds recent reviews widget
 Chartsbeds bar statistics widget

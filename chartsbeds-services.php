@@ -1,8 +1,10 @@
 <?php
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**Services new shortcode Multilang!!!*/
 function chartsbeds_services_func( $atts ) {
+    
     $lang = ICL_LANGUAGE_CODE; //Checking language of site page
     
     //Check if $lang equal to languages that we use en (English), fr (French), de (Deutch), es (Spanish), it (Italian), pt-pt (Portugal), ru (Russian), zh-hant (Chinese)
@@ -39,9 +41,11 @@ function chartsbeds_services_func( $atts ) {
              }
         echo "</div>";
 }
+
 add_shortcode( 'chartsbeds-services', 'chartsbeds_services_func' );
 
-/**Room description new shortcode Multilang!!!*/
+
+/**Room deskription new shortcode Multilang!!!*/
 function chartsbeds_roomdesc_func( $atts ) {
     
     $lang = ICL_LANGUAGE_CODE; //Checking language of site page
@@ -71,18 +75,24 @@ function chartsbeds_roomdesc_func( $atts ) {
             foreach ($atts as $att=>$s){
                     if(in_array($att, $myArray)){
                         if (!empty($s) && $att > 50 && $att < 100 ){
+                            
                             $output .= $s;
+                            
                             $s = $output;
+                            
                             return $s;
+                            
                         }else{
                             $output .= '<p style="text-align:left">';
                             $output .= $s;
                             $output .= '</p>';
                             $s = $output;
+                            
                             return $s;
                         }
                     }
              }
 
 }
+
 add_shortcode( 'chartsbeds-roomdesc', 'chartsbeds_roomdesc_func' );

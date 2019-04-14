@@ -1,4 +1,8 @@
 
+#front-page-3 .image-section {
+	height: 100%!important;
+}
+
 .carousel-info .pull-left{
   /* max-width: 140px !important */
   float: left;
@@ -15,6 +19,7 @@
     padding: 15px;
     position: relative;
     min-height: 140px;
+	margin-left: 0!important;
 }
 .testimonials blockquote::before {
     width: 0;
@@ -179,7 +184,7 @@
 }
 
 div#chartsbedsCircles {
-  min-height: 120px;
+  min-height: 230px;
 }
 
 .wrap_circle{
@@ -191,15 +196,15 @@ div#chartsbedsCircles {
     margin-bottom: 20px;
 }
 
-span.circleTitle{
-  line-height: 16px;
-  font-size: 14px;
-  float: right;
-  width: 100%;
-  text-align: center;
-  top: -20px;
-  font-weight: bold;
-  } 
+span.circleTitle {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    padding: 0;
+    margin: 0px;
+    line-height: 40px;
+}
+  
   @media screen and (max-width: 1024px) {
       .wrap_circle {
         display: none;

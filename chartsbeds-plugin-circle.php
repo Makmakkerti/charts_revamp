@@ -17,7 +17,18 @@ function cbeds_circles_func($atts){
     echo "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
 ?>
 
-<div id="chartsbedsCircles">
+<style>
+	span.circleTitle {
+		display: block;
+		width: 100%;
+		font-size: 20px;
+		padding: 0;
+		margin: 0px;
+		line-height: 40px;
+	}
+</style>
+
+<div id="chartsbedsCircles" style="min-height: 280px;">
     <?php 
         for($i = 1; $i <= 5; $i++){ ?>
     <div class="wrap_circle" style="float:left;">

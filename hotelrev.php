@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $pluginPath = plugin_dir_path(__FILE__);
-include ( $pluginPath . 'chartsbeds-services.php' );
+//include ( $pluginPath . 'chartsbeds-services.php' );
 include ( $pluginPath . 'chartsbeds-widget-bar.php' );
 include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
 

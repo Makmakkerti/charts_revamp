@@ -52,7 +52,7 @@ jQuery(document).ready(function() {
 
 <div class="row tinliner">
     <div class="cb-thanks">
-    <a href="http://www.chartsbeds.com/" target="_blank"><img src="<?php echo plugins_url() ?>/chartsbeds/img/chartsbeds-web-logo.png" width="100px" /></a>
+    <a href="http://www.chartsbeds.com/" target="_blank"><img src="<?php echo plugins_url() ?>/chartsbeds_Reviews_plugin/img/chartsbeds-web-logo.png" width="100px" /></a>
     </div>
 
     <?php
@@ -88,7 +88,7 @@ jQuery(document).ready(function() {
     <div class="col-md-6  rcustomers">
         <div class="testimonials">
             <div class="active item">
-                <blockquote>
+                <blockquote style="margin:0;">
                     <p class="cb-rev-clients"><?php echo $reviewsArray['review'];
                         if($reviewsArray['answer']){
                             echo "<br><i class='fa fa-comments revanswer' aria-hidden='true'></i>".$obj['property']." answered: ".$reviewsArray['answer'];
