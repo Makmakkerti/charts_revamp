@@ -3,7 +3,7 @@
 }
 
 .carousel-info .pull-left {
-    /* max-width: 140px !important */
+    max-width: 140px !important;
     float: left;
 }
 
