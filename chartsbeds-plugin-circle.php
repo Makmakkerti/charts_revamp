@@ -14,22 +14,17 @@ function cbeds_circles_func($atts){
 		$json = file_get_contents($thekey, true, $Context);
     }
 
-    $output = "";
-
-    $output .= "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
-
-
+$output .= "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
 $output .= "<style>
-            span.circleTitle {
-                display: block;
-                width: 100%;
-                font-size: 20px;
-                padding: 0;
-                margin: 0px;
-                line-height: 40px;
-            }
-        </style>";
-
+                span.circleTitle {
+                    display: block;
+                    width: 100%;
+                    font-size: 20px;
+                    padding: 0;
+                    margin: 0px;
+                    line-height: 40px;
+                }
+            </style>";
 $output .= '<div id="chartsbedsCircles" style="min-height: 280px;">';
  
 for($i = 1; $i <= 5; $i++){ 
@@ -44,7 +39,6 @@ for($i = 1; $i <= 5; $i++){
     </div>";
 }
 $output .= '</div>';
-
 $output .= "<script type='text/javascript'>
         let data = $json;
         let questions = data.questions;
@@ -91,9 +85,7 @@ function getWidth() {
     //Size of circles can be chenged here
     return window.innerWidth / 28;
 }
-</script>
-";
-
+</script>";
 return $output;
 }
 add_shortcode('chartsbeds-review-circle', 'cbeds_circles_func');
