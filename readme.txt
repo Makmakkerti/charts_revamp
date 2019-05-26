@@ -4,7 +4,7 @@ Donate link: http://chartsbeds.com/
 Tags: chartsbeds, charts, chartspms, pms
 Requires at least: 3.7
 Tested up to: 5.1.1
-Stable tag: 1.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Chartsbeds Review is a powerful tool from ChartsPMS. 
@@ -23,8 +23,6 @@ Shortcodes
 [chartsbeds-review-circle] - to activate circle review statistics
 
 [chartsbeds-review-bar] - to activate bar review statistics
-
-[chartsbeds-review-recent] - to activate recent comments (also in widgets). Has limit settings.
 
 [chartsbeds-review-page] - to activate reviews on page. Has limit settings.
 
@@ -60,6 +58,12 @@ Check to disable hotel's answer for reviews - if checked, hotel's answers will b
 2. assets/screenshot-2.png
 
 == Changelog ==
+
+= 1.4.5 =
+* Completely renewed.
+* Google snippets support added
+* Major bugs and contradictions fixed.
+== Upgrade Notice ==
 
 = 1.0.3 =
 * Fixed small bugs.

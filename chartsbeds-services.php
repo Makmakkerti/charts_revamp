@@ -36,7 +36,6 @@ function chartsbeds_services_func( $atts ) {
 }
 add_shortcode( 'chartsbeds-services', 'chartsbeds_services_func' );
 
-
 /**Room deskription new shortcode Multilang!!!*/
 function chartsbeds_roomdesc_func( $atts ) {
     

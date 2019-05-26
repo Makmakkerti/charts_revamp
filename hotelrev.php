@@ -2,7 +2,7 @@
 /*
 * Plugin Name: Chartsbeds
 * Description: Chartsbeds reviews plugin.
-* Version: 1.4
+* Version: 1.4.5
 * Author: ChartsBeds
 * Author URI: https://chartsbeds.com
 */

@@ -8,13 +8,10 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
     //Form data sent
 	$apiKey = esc_html($_POST['charts_key']);
 	update_option('charts_key', $apiKey);
-
     $urlRev = esc_url_raw(esc_html($_POST['rev_url']));
     update_option('rev_url', $urlRev);
-
     $recAmt = intval($_POST['rec_amt']);
     update_option('rec_amt', $recAmt);
-
     $rev_per_page = intval($_POST['rev_per_page']);
     if($rev_per_page>50){$rev_per_page = 50;}
     update_option('rev_per_page', $rev_per_page);
@@ -144,30 +141,32 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
         <hr>
         <h3>Settings for Google Snippets</h3>
 
-        <?php _e("Property name:" ); ?>
-        <p><input type="text" name="cbsnippet_propname" id="cbsnippet_propname" value="<?php echo $snPropname ?>" size="110"></p>
+        <div style="width:50%; float: left;">
+            <?php _e("Property name:" ); ?>
+            <p><input type="text" name="cbsnippet_propname" id="cbsnippet_propname" value="<?php echo $snPropname ?>" size="110"></p>
 
-        <?php _e("Reviews page url:" ); ?>
-        <p><input type="text" name="cbsnippet_pageurl" id="cbsnippet_pageurl" value="<?php echo $snPageurl ?>" size="110"></p>
+            <?php _e("Reviews page url:" ); ?>
+            <p><input type="text" name="cbsnippet_pageurl" id="cbsnippet_pageurl" value="<?php echo $snPageurl ?>" size="110"></p>
 
-        <?php _e("Country:" ); ?>
-        <p><input type="text" name="cbsnippet_country" id="cbsnippet_country" value="<?php echo $snCountry ?>" size="110"></p>
+            <?php _e("Country:" ); ?>
+            <p><input type="text" name="cbsnippet_country" id="cbsnippet_country" value="<?php echo $snCountry ?>" size="110"></p>
 
-        <?php _e("City:" ); ?>
-        <p><input type="text" name="cbsnippet_city" id="cbsnippet_city" value="<?php echo $snCity ?>" size="110"></p>
+            <?php _e("City:" ); ?>
+            <p><input type="text" name="cbsnippet_city" id="cbsnippet_city" value="<?php echo $snCity ?>" size="110"></p>
+        </div>
+        <div style="width:50%; float: left;">
+            <?php _e("Street address:" ); ?>
+            <p><input type="text" name="cbsnippet_street" id="cbsnippet_street" value="<?php echo $snStreet ?>" size="110"></p>
 
-        <?php _e("Street address:" ); ?>
-        <p><input type="text" name="cbsnippet_street" id="cbsnippet_street" value="<?php echo $snStreet ?>" size="110"></p>
+            <?php _e("Postal code:" ); ?>
+            <p><input type="text" name="cbsnippet_postal" id="cbsnippet_postal" value="<?php echo $snPostal ?>" size="110"></p>
 
-        <?php _e("Postal code:" ); ?>
-        <p><input type="text" name="cbsnippet_postal" id="cbsnippet_postal" value="<?php echo $snPostal ?>" size="110"></p>
+            <?php _e("Phone number(s):" ); ?>
+            <p><input type="text" name="cbsnippet_phone" id="cbsnippet_phone" value="<?php echo $snPhone ?>" size="110"></p>
 
-        <?php _e("Phone number(s):" ); ?>
-        <p><input type="text" name="cbsnippet_phone" id="cbsnippet_phone" value="<?php echo $snPhone ?>" size="110"></p>
-
-        <?php _e("Price range:" ); ?>
-        <p><input type="text" name="cbsnippet_price" id="cbsnippet_price" value="<?php echo $snPrice ?>" size="110"></p>
-
+            <?php _e("Price range:" ); ?>
+            <p><input type="text" name="cbsnippet_price" id="cbsnippet_price" value="<?php echo $snPrice ?>" size="110"></p>
+        </div>
         <p class="submit"><input type="submit" name="Save" value="<?php _e('Update Options', 'charts_updates' ); ?>" /></p>
         <?php echo wp_nonce_field('cbeds-update'); ?>
     </form>
@@ -182,9 +181,9 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
 <b>Shortcodes:</b><br>
 [chartsbeds-review-circle] – to activate circle review statistics<br>
 [chartsbeds-review-bar] – to activate bar review statistics<br>
-[chartsbeds-review-recent] – to activate recent comments (also in widgets). Has limit settings.<br>
+<!-- [chartsbeds-review-recent] – to activate recent comments (also in widgets). Has limit settings.<br> -->
 [chartsbeds-review-page] – to activate reviews on page. Has limit settings.<br><br>
 <b>Limits:</b><br>
 
-With [chartsbeds-review-recent] and [chartsbeds-review-page] you can use limits. <br>
+With [chartsbeds-review-recent] <!--and [chartsbeds-review-page]-->you can use limits. <br> 
 Example [chartsbeds-review-page limit="8"]

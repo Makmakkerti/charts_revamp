@@ -40,8 +40,6 @@ add_action( 'wp_head', function () {
             "priceRange": "'.$pPrice.'"
         }
     </script>';
-
+    
     echo $snipOut;
  });
-
-
