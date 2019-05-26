@@ -1,6 +1,5 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 /**Services new shortcode Multilang!!!*/
 function chartsbeds_services_func( $atts ) {
     $lang = ICL_LANGUAGE_CODE; //Checking language of site page
@@ -24,19 +23,16 @@ function chartsbeds_services_func( $atts ) {
     $atts = shortcode_atts( $att, $atts, 'chartsbeds-services' );
     
     //Check, what lines we should show (using shortcode attribute)    
-        $myArray = explode(',', $atts['show']);
+    $myArray = explode(',', $atts['show']);
         
-        echo "<div class=\"col-md-12\">";
-            foreach ($atts as $att=>$s){
-                    if(in_array($att, $myArray)){
-                        
-                        if (!empty($s) && $att < 200 ){echo '<li class="services-list">'.$s.'</li>';}
-                        
-                        if (!empty($s) && $att > 199 ){echo '<h4>'.$s.'</h4>';}
-                            
-                    }
-             }
-        echo "</div>";
+    echo "<div class=\"col-md-12\">";
+        foreach ($atts as $att=>$s){
+            if(in_array($att, $myArray)){
+                if (!empty($s) && $att < 200 ){echo '<li class="services-list">'.$s.'</li>';}
+                if (!empty($s) && $att > 199 ){echo '<h4>'.$s.'</h4>';}
+            }
+        }
+    echo "</div>";
 }
 add_shortcode( 'chartsbeds-services', 'chartsbeds_services_func' );
 

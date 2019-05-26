@@ -15,9 +15,9 @@ include ( $pluginPath . 'chartsbeds-plugin-page.php' );
 include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
 include ( $pluginPath . 'chartsbeds-widget-bar.php' );
 include ( $pluginPath . 'admin_widget_bar.php' );
-
+include ( $pluginPath . 'chartsbeds-services.php' );
+include ( $pluginPath . 'chartsbeds_rich_snippets.php' );
 //include ( $pluginPath . 'chartsbeds-widget-review.php' );
-//include ( $pluginPath . 'chartsbeds-services.php' );
 //include ( $pluginPath . 'admin_widget_review.php' );
 
 /*ADDING AND REGISTERING STYLES AND SCRIPTS*/

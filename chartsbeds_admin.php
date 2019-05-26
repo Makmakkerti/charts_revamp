@@ -52,11 +52,31 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
     }else{
         $dark_on = "";
     }
-    update_option('dark_on', $dark_on); ?>
+    update_option('dark_on', $dark_on); 
+    
+    /** Snippets settings */
+    
+    $snPropname = $_POST['cbsnippet_propname'];
+    update_option('cbsnippet_propname', $snPropname);
+    $snPageurl = $_POST['cbsnippet_pageurl'];
+    update_option('cbsnippet_pageurl', $snPageurl);
+    $snCountry = $_POST['cbsnippet_country'];
+    update_option('cbsnippet_country', $snCountry);
+    $snCity = $_POST['cbsnippet_city'];
+    update_option('cbsnippet_city', $snCity);
+    $snStreet = $_POST['cbsnippet_street'];
+    update_option('cbsnippet_street', $snStreet);
+    $snPostal = $_POST['cbsnippet_postal'];
+    update_option('cbsnippet_postal', $snPostal);
+    $snPhone = $_POST['cbsnippet_phone'];
+    update_option('cbsnippet_phone', $snPhone);
+    $snPrice = $_POST['cbsnippet_price'];
+    update_option('cbsnippet_price', $snPrice);
+?>
 
-    <div class="updated">
-        <p><strong><?php echo _e('Options saved'); ?></strong></p>
-    </div>
+<div class="updated">
+    <p><strong><?php echo _e('Options saved'); ?></strong></p>
+</div>
 
 <?php 
 }else{
@@ -64,6 +84,15 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
     $urlRev = get_option('rev_url');
     $recAmt = get_option('rec_amt');
     $rev_per_page = get_option('rev_per_page');
+
+    $snPropname = get_option('cbsnippet_propname');
+    $snPageurl = get_option('cbsnippet_pageurl');
+    $snCountry = get_option('cbsnippet_country');
+    $snCity = get_option('cbsnippet_city');
+    $snStreet = get_option('cbsnippet_street');
+    $snPostal = get_option('cbsnippet_postal');
+    $snPhone = get_option('cbsnippet_phone');
+    $snPrice = get_option('cbsnippet_price');
 }
 
 ?>
@@ -74,7 +103,7 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
         action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']) ?>&action=update">
 
         <h4><?php __( 'Chartsbeds API KEY', 'charts_updates' ) ?></h4>
-        <p><?php _e("Insert API KEY: " ); ?>
+        <p><?php _e("Insert API KEY: " ); ?> 
             <input type="text" name="charts_key" id="charts_key" value="<?php echo $apiKey ?>" size="110">
             <label for="charts_key"> <?php _e(" to recieve KEY, please contact Chartsbeds support" ); ?></label></p>
 
@@ -104,23 +133,50 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
             <label for="gravataroff">Check to disable gravatars for reviews widget</label></div>
 
         <div>
-            <input type="checkbox" id="answers_off" name="answers_off" value="check" <?php echo get_option("answers_off") ?>>
+            <input type="checkbox" id="answers_off" name="answers_off" value="check"
+                <?php echo get_option("answers_off") ?>>
             <label for="answers_off">Check to disable hotel's answer for reviews</label></div>
 
         <div>
             <input type="checkbox" id="thanks_on" name="thanks_on" value="check" <?php echo get_option("thanks_on") ?>>
             <label for="thanks_on">Check to enable Chartsbeds link in reviews</label></div>
 
-        <p class="submit"><input type="submit" name="Save" value="<?php _e('Update Options', 'charts_updates' ); ?>" />
-        </p>
+        <hr>
+        <h3>Settings for Google Snippets</h3>
+
+        <?php _e("Property name:" ); ?>
+        <p><input type="text" name="cbsnippet_propname" id="cbsnippet_propname" value="<?php echo $snPropname ?>" size="110"></p>
+
+        <?php _e("Reviews page url:" ); ?>
+        <p><input type="text" name="cbsnippet_pageurl" id="cbsnippet_pageurl" value="<?php echo $snPageurl ?>" size="110"></p>
+
+        <?php _e("Country:" ); ?>
+        <p><input type="text" name="cbsnippet_country" id="cbsnippet_country" value="<?php echo $snCountry ?>" size="110"></p>
+
+        <?php _e("City:" ); ?>
+        <p><input type="text" name="cbsnippet_city" id="cbsnippet_city" value="<?php echo $snCity ?>" size="110"></p>
+
+        <?php _e("Street address:" ); ?>
+        <p><input type="text" name="cbsnippet_street" id="cbsnippet_street" value="<?php echo $snStreet ?>" size="110"></p>
+
+        <?php _e("Postal code:" ); ?>
+        <p><input type="text" name="cbsnippet_postal" id="cbsnippet_postal" value="<?php echo $snPostal ?>" size="110"></p>
+
+        <?php _e("Phone number(s):" ); ?>
+        <p><input type="text" name="cbsnippet_phone" id="cbsnippet_phone" value="<?php echo $snPhone ?>" size="110"></p>
+
+        <?php _e("Price range:" ); ?>
+        <p><input type="text" name="cbsnippet_price" id="cbsnippet_price" value="<?php echo $snPrice ?>" size="110"></p>
+
+        <p class="submit"><input type="submit" name="Save" value="<?php _e('Update Options', 'charts_updates' ); ?>" /></p>
         <?php echo wp_nonce_field('cbeds-update'); ?>
     </form>
 </div>
 
-<a href="http://www.chartsbeds.com/" target="_blank"><img src="<?php echo plugins_url() ?>/chartsbeds/img/chartsbeds-web-logo.png"
-        width="150px"></a>
-<a href="http://dashboard.chartspms.com/" target="_blank"><img src="<?php echo plugins_url() ?>/chartsbeds/img/review-logo.png"
-        width="200px"></a>
+<a href="http://www.chartsbeds.com/" target="_blank"><img
+        src="<?php echo plugins_url() ?>/chartsbeds/img/chartsbeds-web-logo.png" width="150px"></a>
+<a href="http://dashboard.chartspms.com/" target="_blank"><img
+        src="<?php echo plugins_url() ?>/chartsbeds/img/review-logo.png" width="200px"></a>
 
 <h2>How to use plugin?</h2>
 <b>Shortcodes:</b><br>
