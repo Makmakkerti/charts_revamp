@@ -68,7 +68,7 @@ $output .= "<script type='text/javascript'>
                 colors: h_color,
                 duration: 900,
                 text: function(currentValue) {
-                    return currentValue + '%' + '<span class=\"circleTitle\">' + questions[index] +
+                    return currentValue.toFixed() + '%' + '<span class=\"circleTitle\">' + questions[index] +
                         '</span>';
                 }
             });
